@@ -1,8 +1,12 @@
+//import './style.css'
+
 (function () {
   const example = document.getElementById("example");
   const cw1 = document.getElementById("cw1");
   const cw2 = document.getElementById("cw2");
   const cw3 = document.getElementById("cw3");
+  const cw4 = document.getElementById("cw4");
+  const cw5 = document.getElementById("cw5");
   const answer = document.getElementById("answer");
 
   example.addEventListener("click", function () {
@@ -18,6 +22,7 @@
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((posts) => {
+        console.log(posts);
         let content = "<ul>";
         posts.forEach((element) => {
           content += `<li>
@@ -35,6 +40,7 @@
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((posts) => {
+        console.log(posts);
         let content = "<ul>";
         posts.forEach((element) => {
           content += `<li>
@@ -52,6 +58,7 @@
     .then((response) => response.json())
     .then(post =>
       {
+        console.log(post);
         answer.innerHTML = `<h1>${post.title}</h1>
         <p>${post.body}</p>`;
       })
@@ -72,7 +79,25 @@
         .then((response) => response.json())
         .then(post =>
                {
+                 console.log(post);
                  answer.innerHTML = `<h1>Dodano nowy post o id=${post.id}</h1>`
                });
 } )
+  cw5.addEventListener("click", function () {
+    window.alert("Loading...")
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((posts) => {
+        console.log(posts);
+        let content = "<ul>";
+        posts.forEach((element) => {
+          content += `<li>
+                <h1>${element.title}</h1>
+                <p>${element.body}</p>
+                </li>`;
+        });
+        content += "</ul>";
+        answer.innerHTML = content;
+      });
+  });
 })();
